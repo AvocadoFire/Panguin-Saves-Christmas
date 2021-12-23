@@ -16,11 +16,11 @@ TagManager:
   - Player
   - Background
   - Bouncing
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemies
+  - MonsterGrid
+  - Hazards
+  - Pickups
+  - FX
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Monster Grid
+    uniqueID: 1444929645
+    locked: 0
   - name: Background
     uniqueID: 66351579
     locked: 0
@@ -50,12 +53,24 @@ TagManager:
   - name: Water
     uniqueID: 1764484313
     locked: 0
+  - name: Pickups
+    uniqueID: 185893383
+    locked: 0
   - name: Platform
     uniqueID: 3021671159
     locked: 0
   - name: Climbing
     uniqueID: 206968901
     locked: 0
+  - name: Hazards
+    uniqueID: 3258757233
+    locked: 0
+  - name: Enemies
+    uniqueID: 3878744403
+    locked: 0
   - name: Player
     uniqueID: 2357743299
+    locked: 0
+  - name: FX
+    uniqueID: 2941003269
     locked: 0

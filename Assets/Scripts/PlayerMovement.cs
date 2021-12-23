@@ -6,59 +6,65 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float runSpeed = 5f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpSpeedY = 5f;
     [SerializeField] float climbSpeed = 2f;
-    [SerializeField] int numberJumps = 0;
-    [SerializeField] float jumpIncrease = 2f;
+    [SerializeField] int maxJumps = 1;
+ //   [SerializeField] float jumpIncreaseX = 2f;
     [SerializeField] float gravity = 5f;
+    [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
     Animator myAnimator;
-    CapsuleCollider2D myCapsuleCollider;
-    int jumps = 0;
+    CapsuleCollider2D myBodyCollider;
+    BoxCollider2D myFeetCollider;
+    int jumpsLeft = 0;
+    bool isAlive = true;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        myBodyCollider = GetComponent<CapsuleCollider2D>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
-    { 
+    {
+        if (!isAlive) { return;}
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     void OnMove(InputValue value)
     {
+        if (!isAlive) { return; }
         moveInput = value.Get<Vector2>();
     }
 
     void OnJump()
     {
+        if (!isAlive) { return; }
 
-        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            jumps = 1;
-            myRigidbody.velocity += new Vector2(0f, jumpSpeed);
-        }
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            if (jumps < numberJumps) 
-            {
-                jumps++;
-                myRigidbody.velocity += new Vector2
-                    (0f + jumpIncrease, 
-                    myRigidbody.velocity.y + jumpSpeed);
-                return; 
-            }
-            else { return; }
+            jumpsLeft = maxJumps;
+         myRigidbody.velocity += new Vector2(0f, jumpSpeedY);
+         --jumpsLeft;
+            Debug.Log(jumpsLeft);
         }
 
+        else
+        {
+            if (jumpsLeft <= 0) 
+            { return; }
+            myRigidbody.velocity += new Vector2(0f, jumpSpeedY);
+            --jumpsLeft;
+            Debug.Log(jumpsLeft);
+        }
 
-         
     }
 
     void Run()
@@ -68,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody.velocity = playerVelocity;
     
     }
+
 
     void FlipSprite()
     {
@@ -85,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ClimbLadder()
     {
-        if (!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myAnimator.SetBool("IsClimbing", false);
             myRigidbody.gravityScale = gravity;
@@ -93,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         myAnimator.SetBool("IsClimbing", true);
-        myRigidbody.gravityScale = 0;
+        myRigidbody.gravityScale = .1f;
         Vector2 climbVelocity =
             new Vector2(myRigidbody.velocity.x, climbSpeed * moveInput.y);
         myRigidbody.velocity = climbVelocity;
@@ -101,4 +108,24 @@ public class PlayerMovement : MonoBehaviour
         bool playVertSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
         myAnimator.enabled = (playVertSpeed);
     }
+
+    void Die()
+    {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Hazards")))
+        {
+            isAlive = false;
+            myAnimator.SetTrigger("IsDying");
+            myRigidbody.velocity = deathKick;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            jumpsLeft = maxJumps;
+            Debug.Log(jumpsLeft);
+        }
+    }
+
 }
