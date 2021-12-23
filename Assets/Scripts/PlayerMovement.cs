@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeedY = 5f;
     [SerializeField] float climbSpeed = 2f;
     [SerializeField] int maxJumps = 1;
- //   [SerializeField] float jumpIncreaseX = 2f;
     [SerializeField] float gravity = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
 
@@ -72,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerVelocity = 
             new Vector2(runSpeed * moveInput.x, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
-    
+
     }
 
 
