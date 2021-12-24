@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-  //  [SerializeField] GameObject giftParticle;
-   // [SerializeField] AudioClip giftPickupSFX;
+    [SerializeField] GameObject exitParticle;
+    [SerializeField] AudioClip exitPickupSFX;
     [SerializeField] LevelLoader levelLoader;
-   // [SerializeField] int giftWorth = 1;
 
-//    GameSession gameSession;
-
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-  //      gameSession = FindObjectOfType<GameSession>();
+        Instantiate(exitParticle, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(exitPickupSFX, Camera.main.transform.position);
+        other.gameObject.SetActive(false);
+        Invoke("NextScene", 1);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void NextScene()
     {
-   //     Instantiate(giftParticle, transform.position, Quaternion.identity);
-    //    AudioSource.PlayClipAtPoint(giftPickupSFX, Camera.main.transform.position);
-        Destroy(gameObject);
+        FindObjectOfType<SessionPersist>().ResetScenePersist();
         levelLoader.LoadNextScene();
 
-   //     gameSession.AddToScore(giftWorth);
     }
+
 }

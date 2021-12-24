@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int maxJumps = 1;
     [SerializeField] float gravity = 5f;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+    [SerializeField] LevelLoader levelLoader;
+    [SerializeField] AudioClip dieSFX;
 
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
@@ -113,10 +115,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isAlive = false;
             myAnimator.SetTrigger("IsDying");
+            AudioSource.PlayClipAtPoint(dieSFX, Camera.main.transform.position);
             myRigidbody.velocity = deathKick;
-        }
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        } 
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))

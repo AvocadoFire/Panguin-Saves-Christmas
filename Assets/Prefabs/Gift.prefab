@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2052406623872032458}
+  - component: {fileID: 2052406623872032454}
   - component: {fileID: 2052406623872032453}
   - component: {fileID: 2052406623872032452}
   - component: {fileID: 2052406623872032455}
-  - component: {fileID: 2052406623872032454}
   - component: {fileID: 2052406623872032459}
   m_Layer: 14
   m_Name: Gift
@@ -35,6 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052406623872032454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052406623872032449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8189b2cba5a35459e0f239737af5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  giftParticle: {fileID: 8264400359069747578, guid: b618200f697e8e641a9791e8d5a6d12a, type: 3}
+  giftPickupSFX: {fileID: 8300000, guid: 7478a7698ef41b8419787b26bf41ea6f, type: 3}
+  giftWorth: 1
 --- !u!212 &2052406623872032453
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +88,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 185893383
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 380abfa69acafaf48b20d3ecd1ab292b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,21 +146,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8528433, y: 0.8683367}
   m_EdgeRadius: 0
---- !u!114 &2052406623872032454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052406623872032449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c8189b2cba5a35459e0f239737af5f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  giftParticle: {fileID: 8264400359069747578, guid: b618200f697e8e641a9791e8d5a6d12a, type: 3}
-  giftPickupSFX: {fileID: 8300000, guid: 7478a7698ef41b8419787b26bf41ea6f, type: 3}
-  giftWorth: 1
 --- !u!50 &2052406623872032459
 Rigidbody2D:
   serializedVersion: 4

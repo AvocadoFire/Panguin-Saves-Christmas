@@ -12,7 +12,6 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-     //   myFeet = GetComponent<BoxCollider2D>();
     }
 
     void Update()
