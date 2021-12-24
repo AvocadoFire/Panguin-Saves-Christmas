@@ -56,7 +56,7 @@ MonoBehaviour:
   gravity: 2.3
   deathKick: {x: 3, y: 3}
   levelLoader: {fileID: 6901094639742656436, guid: 1a82e3758f43d0d42b09bf29cd331d2e, type: 3}
-  dieSFX: {fileID: 8300000, guid: 62b24b20218b2b043a1e1a17e5854447, type: 3}
+  dieSFX: {fileID: 8300000, guid: e75fb1eb420fcd74f877b83d9942f3b4, type: 3}
 --- !u!95 &2544732533386027915
 Animator:
   serializedVersion: 3

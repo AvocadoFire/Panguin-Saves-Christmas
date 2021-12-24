@@ -20,7 +20,6 @@ public class Exit : MonoBehaviour
     {
         FindObjectOfType<SessionPersist>().ResetScenePersist();
         levelLoader.LoadNextScene();
-
     }
 
 }
