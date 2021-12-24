@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2695718958601535633}
   m_Layer: 8
   m_Name: Paguin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   climbSpeed: 5
   maxJumps: 2
   gravity: 2.3
-  deathKick: {x: 10, y: 10}
+  deathKick: {x: 3, y: 3}
 --- !u!70 &4177013315720418477
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

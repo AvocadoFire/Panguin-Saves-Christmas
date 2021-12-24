@@ -21,8 +21,8 @@ TagManager:
   - Hazards
   - Pickups
   - FX
-  - 
-  - 
+  - Water
+  - Shark
   - 
   - 
   - 
@@ -50,9 +50,6 @@ TagManager:
   - name: Hazard
     uniqueID: 2332653519
     locked: 0
-  - name: Water
-    uniqueID: 1764484313
-    locked: 0
   - name: Pickups
     uniqueID: 185893383
     locked: 0
@@ -71,6 +68,15 @@ TagManager:
   - name: Player
     uniqueID: 2357743299
     locked: 0
+  - name: Water
+    uniqueID: 1764484313
+    locked: 0
+  - name: Shark
+    uniqueID: 4000055705
+    locked: 0
   - name: FX
     uniqueID: 2941003269
+    locked: 0
+  - name: UI
+    uniqueID: 3652218179
     locked: 0

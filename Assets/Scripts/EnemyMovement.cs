@@ -20,10 +20,11 @@ public class EnemyMovement : MonoBehaviour
         myRigidBody.velocity = new Vector2(moveSpeed, 0f);
     }
 
-    private void OnTriggerExit2D() //from monster grid
+    private void OnTriggerExit2D(Collider2D other) //from monster grid
     {
-        moveSpeed = -1 * moveSpeed;
-       transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-    }
+       if (other.CompareTag("Player")) { return; }
+            moveSpeed = -1 * moveSpeed;
+            transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        }
 
 }

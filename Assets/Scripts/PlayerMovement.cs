@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             jumpsLeft = maxJumps;
          myRigidbody.velocity += new Vector2(0f, jumpSpeedY);
          --jumpsLeft;
-            Debug.Log(jumpsLeft);
+
         }
 
         else
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             { return; }
             myRigidbody.velocity += new Vector2(0f, jumpSpeedY);
             --jumpsLeft;
-            Debug.Log(jumpsLeft);
+
         }
 
     }
@@ -71,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerVelocity = 
             new Vector2(runSpeed * moveInput.x, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
-
     }
 
 
@@ -123,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         if (myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             jumpsLeft = maxJumps;
-            Debug.Log(jumpsLeft);
+
         }
     }
 
